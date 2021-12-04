@@ -7,5 +7,24 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(janitor)
+library(here)
+```
+
+### Estimated Use of Water in the US, County-Level Data for 2015 from the USGS. 
+```{r}
+water_use <- read.csv(here("data/usco2015v2.0.csv"), skip =1 ) %>% clean_names() 
+```
+
+### Convert character columns to numeric 
+```{r}
+water_use <- water_use %>%
+  mutate(across(6:141, as.numeric))
+```
+
+### Add ggplot here
+```{r}
+
 ```
 
