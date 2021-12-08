@@ -1,6 +1,6 @@
 ---
 title: "Lab 9"
-author: "Elmera Azadpour"
+author: "Elmera Azadpour & Debra Perrone"
 date: "12/3/2021"
 output: html_document
 ---
@@ -12,19 +12,20 @@ library(janitor)
 library(here)
 ```
 
-### Estimated Use of Water in the US, County-Level Data for 2015 from the USGS. 
-```{r}
-water_use <- read.csv(here("data/usco2015v2.0.csv"), skip =1 ) %>% clean_names() 
+### Parter 2: Estimated Use of Water in California, County-Level Data for 2015 from the USGS. 
+```{r, error= TRUE, message=FALSE, warning = FALSE}
+water_use_ca <- read.csv(here("data/usco2015v2.0.csv"), skip =1 ) %>% 
+  clean_names() %>% 
+  mutate(across(6:141, as.numeric)) %>% 
+  filter(state == "CA")
 ```
 
-### Convert character columns to numeric 
-```{r}
-water_use <- water_use %>%
-  mutate(across(6:141, as.numeric))
+### Parter 1: Estimated Use of Water in Oklahoma, County-Level Data for 2015 from the USGS.
+```{r, error= TRUE, message=FALSE, warning = FALSE}
+water_use_ok <- read.csv(here("data/usco2015v2.0.csv"), skip =1 ) %>% 
+  clean_names() %>% 
+  mutate(across(6:141, as.numeric)) %>% 
+  filter(state == "OK")
 ```
 
-### Add ggplot here
-```{r}
-
-```
-
+## End of prelab 
